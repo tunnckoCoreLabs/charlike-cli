@@ -24,6 +24,7 @@ const cli = require('meow')(`
       --name, -N        Name of the project, same as to pass first param
       --desc, -D        Project description, same as to pass second param
       --repo, -R        Repository pattern like username/projectName
+      --engine, -E      Engine to be used, j140 by default
       --locals, -L      Context to pass to template files (support dot notation)
       --templates, -T   Path to templates folder
       --cwd, -C         Folder to be used as current working dir
@@ -38,6 +39,7 @@ const cli = require('meow')(`
     name: 'N',
     desc: 'D',
     repo: 'R',
+    engine: 'E',
     locals: 'L',
     templates: 'T',
     help: 'h',
