@@ -21,7 +21,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "charlike": "^0.2.6",
+    "charlike": "^0.2.8",
     "git-user-name": "^1.2.0",
     "meow": "^3.7.0"
   },
