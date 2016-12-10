@@ -56,11 +56,14 @@ if (cli.flags.help || !name || !desc) {
   cli.showHelp(0)
 }
 
-cli.flags.description = cli.flags.desc
+cli.flags.description = desc
 cli.flags.repository = cli.flags.repo
 cli.flags.owner = cli.flags.owner || username()
 
-charlike(name, desc, cli.flags)
+const options = cli.flags
+options.locals = cli.flags
+
+charlike(name, desc, options)
   .then((dest) => {
     console.log(`Project "${name}" scaffolded to "${dest}"`)
   })
