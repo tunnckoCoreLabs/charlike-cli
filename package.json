@@ -21,7 +21,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "charlike": "^0.2.8",
+    "charlike": "*",
     "git-user-name": "^1.2.0",
     "minimist": "^1.2.0"
   },
