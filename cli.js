@@ -26,6 +26,8 @@ const cli = require('minimist')(process.argv.slice(2), {
   }
 })
 
+process.title = pkg.bin ? Object.keys(pkg.bin)[0] : pkg.name
+
 const name = cli._[0] || cli.name
 const desc = cli._[1] || cli.desc
 
