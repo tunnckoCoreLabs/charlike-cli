@@ -9,33 +9,10 @@
 
 'use strict'
 
+const pkg = require('./package.json')
 const charlike = require('charlike')
 const username = require('git-user-name')
-const cli = require('meow')(`
-    Usage
-      $ charlike <name> <description> [flags]
-
-    Common Flags
-      --help            Show this output
-      --version         Show version
-
-    Options
-      --owner, -O       Project github owner - username or organization
-      --name, -N        Name of the project, same as to pass first param
-      --desc, -D        Project description, same as to pass second param
-      --repo, -R        Repository pattern like username/projectName
-      --engine, -E      Engine to be used, j140 by default
-      --locals, -L      Context to pass to template files (support dot notation)
-      --templates, -T   Path to templates folder
-      --cwd, -C         Folder to be used as current working dir
-
-    Examples
-      $ charlike my-awesome-project 'some cool description'
-      $ charlike minibase-data 'we are awesome' --owner node-minibase
-      $ charlike -D 'abc description here' -N beta-trans -O gulpjs
-
-    Issues: https://github.com/tunnckoCore/charlike
-`, {
+const cli = require('minimist')(process.argv.slice(2), {
   alias: {
     owner: 'O',
     name: 'N',
@@ -49,19 +26,60 @@ const cli = require('meow')(`
   }
 })
 
-const name = cli.input[0] || cli.flags.name
-const desc = cli.input[1] || cli.flags.desc
+const name = cli._[0] || cli.name
+const desc = cli._[1] || cli.desc
 
-if (cli.flags.help || !name || !desc) {
-  cli.showHelp(0)
+delete cli['_']
+
+const showHelp = (status) => {
+  console.log(`
+  ${pkg.description}
+  (${pkg.name} v${pkg.version})
+
+  Usage
+    $ charlike <name> <description> [flags]
+
+  Common Flags
+    --help            Show this output
+    --version         Show version
+
+  Options
+    --owner, -O       Project github owner - username or organization
+    --name, -N        Name of the project, same as to pass first param
+    --desc, -D        Project description, same as to pass second param
+    --repo, -R        Repository pattern like username/projectName
+    --engine, -E      Engine to be used, j140 by default
+    --locals, -L      Context to pass to template files (support dot notation)
+    --templates, -T   Path to templates folder
+    --cwd, -C         Folder to be used as current working dir
+
+  Examples
+    $ charlike my-awesome-project 'some cool description'
+    $ charlike minibase-data 'we are awesome' --owner node-minibase
+    $ charlike -D 'abc description here' -N beta-trans -O gulpjs
+
+  Issues: https://github.com/tunnckoCore/charlike
+  `)
+  process.exit(status)
 }
 
-cli.flags.description = desc
-cli.flags.repository = cli.flags.repo
-cli.flags.owner = cli.flags.owner || username()
+if (cli.version) {
+  console.log(`${pkg.name} v${pkg.version}`)
+  process.exit(0)
+}
+if (cli.help) {
+  showHelp(0)
+}
+if (!name || !desc) {
+  showHelp(1)
+}
 
-const options = cli.flags
-options.locals = cli.flags
+cli.description = desc
+cli.repository = cli.repo
+cli.owner = cli.owner || username()
+
+const options = cli
+options.locals = cli
 
 charlike(name, desc, options)
   .then((dest) => {
