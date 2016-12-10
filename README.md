@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/tunnckoCore/charlike">
+    <img height="250" width="250" src="./logo.png">
+  </a>
+</p>
+
 # charlike-cli [![NPM version](https://img.shields.io/npm/v/charlike-cli.svg?style=flat)](https://www.npmjs.com/package/charlike-cli) [![NPM downloads](https://img.shields.io/npm/dm/charlike-cli.svg?style=flat)](https://npmjs.org/package/charlike-cli) [![npm total downloads][downloads-img]][downloads-url]
 
 > Command line interface for the [charlike][] project scaffolder.
