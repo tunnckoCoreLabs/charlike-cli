@@ -33,6 +33,8 @@ const cli = require('meow')(`
       $ charlike my-awesome-project 'some cool description'
       $ charlike minibase-data 'we are awesome' --owner node-minibase
       $ charlike -D 'abc description here' -N beta-trans -O gulpjs
+
+    Issues: https://github.com/tunnckoCore/charlike
 `, {
   alias: {
     owner: 'O',

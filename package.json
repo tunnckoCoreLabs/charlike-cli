@@ -76,7 +76,10 @@
       "once",
       "standard-version",
       "verb",
-      "verb-generate-readme"
+      "verb-generate-readme",
+      "git-user-name",
+      "handlebars",
+      "jstransformer"
     ]
   },
   "bin": {
