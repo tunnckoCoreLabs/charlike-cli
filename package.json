@@ -5,7 +5,7 @@
   "repository": "tunnckoCore/charlike-cli",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
   "precommit.silent": true,
-  "main": "index.js",
+  "main": "cli.js",
   "license": "MIT",
   "scripts": {
     "lint": "standard --verbose",
@@ -20,7 +20,11 @@
     "precommit": "git add --all",
     "commit": "git-cz"
   },
-  "dependencies": {},
+  "dependencies": {
+    "charlike": "^0.2.6",
+    "git-user-name": "^1.2.0",
+    "meow": "^3.7.0"
+  },
   "devDependencies": {
     "commitizen": "^2.8.6",
     "coveralls": "^2.11.15",
@@ -62,5 +66,12 @@
     "lint": {
       "reflinks": true
     }
+  },
+  "bin": {
+    "charlike": "cli.js"
+  },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=3"
   }
 }
