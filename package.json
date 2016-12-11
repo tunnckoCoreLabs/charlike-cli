@@ -1,6 +1,6 @@
 {
   "name": "charlike-cli",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Command line interface for the [charlike][] project scaffolder.",
   "repository": "tunnckoCore/charlike-cli",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
