@@ -62,12 +62,12 @@ const showHelp = (status) => {
 
   Issues: https://github.com/tunnckoCore/charlike
   `)
-  process.exit(status)
+  process.exit(status) // eslint-disable-line no-process-exit
 }
 
 if (cli.version) {
   console.log(`${pkg.name} v${pkg.version}`)
-  process.exit(0)
+  process.exit(0) // eslint-disable-line no-process-exit
 }
 if (cli.help) {
   showHelp(0)
@@ -90,4 +90,5 @@ charlike(name, desc, options)
   .catch((err) => {
     console.error(`Sorry, some error occured!`)
     console.error(`ERROR: ${err.message}`)
+    process.exit(1) // eslint-disable-line no-process-exit
   })
