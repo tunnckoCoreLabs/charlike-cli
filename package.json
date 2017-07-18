@@ -1,6 +1,6 @@
 {
   "name": "charlike-cli",
-  "version": "0.2.5",
+  "version": "0.0.0-development",
   "description": "Command line interface for the [charlike][] project scaffolder.",
   "repository": "tunnckoCore/charlike-cli",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
@@ -17,7 +17,8 @@
     "git:cz": "simple-commit-message",
     "git:push": "git push",
     "commit": "npm-run-all --silent -s deps secure lint test git",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "setup": "semantic-release-cli setup"
   },
   "dependencies": {
     "charlike": "*",
@@ -28,17 +29,17 @@
   "devDependencies": {
     "dependency-check": "2.9.1",
     "eslint": "4.2.0",
+    "github-post-release": "1.7.2",
     "mukla": "0.4.9",
     "npm-run-all": "4.0.2",
     "nsp": "2.6.3",
     "nyc": "11.1.0",
     "pre-commit": "1.2.2",
+    "semantic-release": "^6.3.6",
     "simple-commit-message": "3.2.0",
     "standard": "10.0.2"
   },
-  "files": [
-    "cli.js"
-  ],
+  "files": ["cli.js"],
   "keywords": [],
   "verb": {
     "run": true,
@@ -49,15 +50,9 @@
       "footer": ""
     },
     "layout": "empty",
-    "tasks": [
-      "readme"
-    ],
+    "tasks": ["readme"],
     "related": {
-      "list": [
-        "always-done",
-        "minibase",
-        "try-catch-core"
-      ]
+      "list": ["always-done", "minibase", "try-catch-core"]
     },
     "lint": {
       "reflinks": true
@@ -93,15 +88,11 @@
     "lines": 0
   },
   "release": {
-    "analyzeCommits": "simple-commit-message"
+    "analyzeCommits": "simple-commit-message",
+    "generateNotes": "github-post-release"
   },
   "pre-commit": {
     "silent": true,
-    "run": [
-      "deps",
-      "secure",
-      "lint",
-      "test"
-    ]
+    "run": ["deps", "secure", "lint", "test"]
   }
 }
