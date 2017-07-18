@@ -10,6 +10,7 @@
 'use strict'
 
 const fs = require('fs')
+const get = require('package-json')
 const pkg = require('./package.json')
 const charlike = require('charlike')
 const username = require('git-user-name')
@@ -34,7 +35,9 @@ const getCharlikeVersion = () => {
   return charlikePkg.version
 }
 
-updateNotifier({ pkg: pkg }).notify()
+get('charlike-cli').then((info) => {
+  updateNotifier({ pkg: info }).notify()
+})
 
 /* istanbul ignore next */
 process.title = pkg.bin ? Object.keys(pkg.bin)[0] : pkg.name

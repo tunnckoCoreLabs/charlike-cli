@@ -24,6 +24,7 @@
     "charlike": "*",
     "git-user-name": "1.2.0",
     "minimist": "1.2.0",
+    "package-json": "4.0.1",
     "update-notifier": "2.2.0"
   },
   "devDependencies": {
