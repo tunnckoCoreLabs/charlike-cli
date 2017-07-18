@@ -9,6 +9,7 @@
 
 'use strict'
 
+const updateNotifier = require('update-notifier')
 const pkg = require('./package.json')
 const charlike = require('charlike')
 const username = require('git-user-name')
@@ -25,6 +26,8 @@ const cli = require('minimist')(process.argv.slice(2), {
     version: 'v'
   }
 })
+
+updateNotifier({ pkg: pkg }).notify()
 
 process.title = pkg.bin ? Object.keys(pkg.bin)[0] : pkg.name
 

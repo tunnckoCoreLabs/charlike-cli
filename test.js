@@ -9,10 +9,8 @@
 
 'use strict'
 
-// const test = require('mukla')
-// const charlikeCli = require('./index')
+const test = require('mukla')
 
-// test('charlike-cli', function (done) {
-//   charlikeCli()
-//   done()
-// })
+test('charlike-cli is okey', function (done) {
+  done()
+})
