@@ -21,7 +21,6 @@
     "setup": "semantic-release-cli setup"
   },
   "dependencies": {
-    "capture-stream": "0.1.2",
     "charlike": "*",
     "git-user-name": "1.2.0",
     "minimist": "1.2.0",
