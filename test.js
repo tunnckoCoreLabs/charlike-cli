@@ -9,6 +9,7 @@
 
 'use strict'
 
+const rimraf = require('rimraf')
 const exists = require('fs-exists-sync')
 const execa = require('execa')
 const test = require('mukla')
@@ -36,6 +37,7 @@ test('should scaffold project', (done) => {
   execa('node', ['./cli.js', 'foo-quxie', '"some descr"']).then(() => {
     test.strictEqual(exists('./foo-quxie'), true)
     test.strictEqual(exists('./foo-quxie/package.json'), true)
+    rimraf.sync('./foo-quxie')
     done()
   }, done)
 })
