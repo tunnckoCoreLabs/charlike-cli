@@ -29,7 +29,6 @@
   "devDependencies": {
     "dependency-check": "2.9.1",
     "eslint": "4.2.0",
-    "github-post-release": "1.7.2",
     "mukla": "0.4.9",
     "npm-run-all": "4.0.2",
     "nsp": "2.6.3",
@@ -39,7 +38,9 @@
     "simple-commit-message": "3.2.0",
     "standard": "10.0.2"
   },
-  "files": ["cli.js"],
+  "files": [
+    "cli.js"
+  ],
   "keywords": [],
   "verb": {
     "run": true,
@@ -50,9 +51,15 @@
       "footer": ""
     },
     "layout": "empty",
-    "tasks": ["readme"],
+    "tasks": [
+      "readme"
+    ],
     "related": {
-      "list": ["always-done", "minibase", "try-catch-core"]
+      "list": [
+        "always-done",
+        "minibase",
+        "try-catch-core"
+      ]
     },
     "lint": {
       "reflinks": true
@@ -88,11 +95,15 @@
     "lines": 0
   },
   "release": {
-    "analyzeCommits": "simple-commit-message",
-    "generateNotes": "github-post-release"
+    "analyzeCommits": "simple-commit-message"
   },
   "pre-commit": {
     "silent": true,
-    "run": ["deps", "secure", "lint", "test"]
+    "run": [
+      "deps",
+      "secure",
+      "lint",
+      "test"
+    ]
   }
 }
