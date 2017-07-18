@@ -44,7 +44,18 @@
   "files": [
     "cli.js"
   ],
-  "keywords": [],
+  "keywords": [
+    "auto",
+    "automation",
+    "charlike",
+    "cli",
+    "project",
+    "project-scaffold",
+    "render",
+    "scaffold",
+    "templates",
+    "update"
+  ],
   "verb": {
     "run": true,
     "toc": {
