@@ -21,6 +21,7 @@
     "setup": "semantic-release-cli setup"
   },
   "dependencies": {
+    "capture-stream": "0.1.2",
     "charlike": "*",
     "git-user-name": "1.2.0",
     "minimist": "1.2.0",
@@ -29,6 +30,8 @@
   "devDependencies": {
     "dependency-check": "2.9.1",
     "eslint": "4.2.0",
+    "execa": "0.7.0",
+    "fs-exists-sync": "0.1.0",
     "mukla": "0.4.9",
     "npm-run-all": "4.0.2",
     "nsp": "2.6.3",
@@ -89,10 +92,10 @@
   },
   "nyc": {
     "check-coverage": true,
-    "statements": 0,
-    "functions": 0,
-    "branches": 0,
-    "lines": 0
+    "statements": 100,
+    "functions": 75,
+    "branches": 100,
+    "lines": 100
   },
   "release": {
     "analyzeCommits": "simple-commit-message"

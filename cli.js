@@ -36,6 +36,7 @@ const getCharlikeVersion = () => {
 
 updateNotifier({ pkg: pkg }).notify()
 
+/* istanbul ignore next */
 process.title = pkg.bin ? Object.keys(pkg.bin)[0] : pkg.name
 
 const name = cli._[0] || cli.name
@@ -100,7 +101,10 @@ charlike(name, desc, options)
     console.log(`Project "${name}" scaffolded to "${dest}"`)
   })
   .catch((err) => {
+    /* istanbul ignore next */
     console.error(`Sorry, some error occured!`)
+    /* istanbul ignore next */
     console.error(`ERROR: ${err.message}`)
+    /* istanbul ignore next */
     process.exit(1) // eslint-disable-line no-process-exit
   })
