@@ -9,10 +9,11 @@
 
 'use strict'
 
-const updateNotifier = require('update-notifier')
+const fs = require('fs')
 const pkg = require('./package.json')
 const charlike = require('charlike')
 const username = require('git-user-name')
+const updateNotifier = require('update-notifier')
 const cli = require('minimist')(process.argv.slice(2), {
   alias: {
     owner: 'O',
@@ -27,6 +28,12 @@ const cli = require('minimist')(process.argv.slice(2), {
   }
 })
 
+const getCharlikeVersion = () => {
+  const filepath = require.resolve('charlike/package.json')
+  const charlikePkg = JSON.parse(fs.readFileSync(filepath, 'utf-8'))
+  return charlikePkg.version
+}
+
 updateNotifier({ pkg: pkg }).notify()
 
 process.title = pkg.bin ? Object.keys(pkg.bin)[0] : pkg.name
@@ -40,6 +47,7 @@ const showHelp = (status) => {
   console.log(`
   ${pkg.description}
   (${pkg.name} v${pkg.version})
+  (charlike v${getCharlikeVersion()})
 
   Usage
     $ charlike <name> <description> [flags]
@@ -70,6 +78,7 @@ const showHelp = (status) => {
 
 if (cli.version) {
   console.log(`${pkg.name} v${pkg.version}`)
+  console.log(`charlike v${getCharlikeVersion()}`)
   process.exit(0) // eslint-disable-line no-process-exit
 }
 if (cli.help) {
