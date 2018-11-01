@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@tunnckocore/package-json": "^0.3.1",
-    "charlike": "^1.7.5",
+    "charlike": "^1.9.1",
     "esm": "^3.0.84",
     "mri": "^1.1.1"
   },
@@ -43,8 +43,8 @@
   "module": "src/index.js",
   "typings": "src/index.d.ts",
   "version": "0.0.0-semantically-released",
-  "repository": "tunnckoCore/charlike-cli",
-  "homepage": "https://github.com/tunnckoCore/charlike-cli",
+  "repository": "tunnckoCoreLabs/charlike-cli",
+  "homepage": "https://github.com/tunnckoCoreLabs/charlike-cli",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",
   "publishConfig": {
     "access": "public",
@@ -60,16 +60,6 @@
     "hooks": {
       "pre-commit": "yarn precommit"
     }
-  },
-  "lint-staged": {
-    "**/*.{js,ts,tsx,es6,jsx,mjs}": [
-      "eslint --cache --fix --quiet --format codeframe",
-      "git add"
-    ],
-    "**/*.{js,ts,tsx,es6,jsx,mjs,md,mdx,json,yaml,yml,toml}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "verb": {
     "run": true,
@@ -96,6 +86,7 @@
       "reflinks": true
     },
     "reflinks": [
+      "charlike",
       "new-release",
       "semantic-release"
     ]

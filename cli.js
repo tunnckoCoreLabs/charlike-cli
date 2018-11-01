@@ -79,7 +79,7 @@ if (!name || !desc) {
 
   /* eslint-disable promise/always-return */
 
-  charlike(name, desc, Object.assign({}, cli, { locals: cli }))
+  charlike(name, desc, cli)
     .then((dest) => {
       console.log(`Project "${name}" scaffolded to "${dest}"`);
     })
