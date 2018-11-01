@@ -541,9 +541,9 @@ chardet@^0.7.0:
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
 charlike@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/charlike/-/charlike-1.9.1.tgz#1e55fc616e6c1ade61c62752d904c63d363c2033"
-  integrity sha512-LfzGHO+xrHj2o+avRWIWw+ahzxdwYSca7K7V8Z+ooanTQmzfDQgiXWMuM52W53xMow2t1CjsiycLQTw28n1KoA==
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/charlike/-/charlike-1.11.1.tgz#b7a760de70a7475780a640afd20dd1b62cd5bcca"
+  integrity sha512-L0SUvyKV3kSig83kOdaXVmCp/aoh3OmcvwOYfkznRG6vxCYDadOB4VdvXxuZVMcMN3nUKCpOEMPBonUEfl9iDg==
   dependencies:
     camelcase "^5.0.0"
     dateformat "^3.0.3"

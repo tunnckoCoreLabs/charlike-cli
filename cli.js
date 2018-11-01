@@ -4,7 +4,7 @@
 
 const proc = require('process');
 const getPkg = require('@tunnckocore/package-json').default;
-const charlike = require('charlike');
+const charlike = require('charlike').default;
 
 const cli = require('mri')(process.argv.slice(2), {
   alias: {
