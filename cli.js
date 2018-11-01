@@ -1,21 +1,12 @@
 #!/usr/bin/env node
 
-/*!
- * charlike-cli <https://github.com/tunnckoCore/charlike-cli>
- *
- * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)
- * Released under the MIT license.
- */
+'use strict';
 
-'use strict'
+const proc = require('process');
+const getPkg = require('@tunnckocore/package-json').default;
+const charlike = require('charlike');
 
-const fs = require('fs')
-const get = require('package-json')
-const pkg = require('./package.json')
-const charlike = require('charlike')
-const username = require('git-user-name')
-const updateNotifier = require('update-notifier')
-const cli = require('minimist')(process.argv.slice(2), {
+const cli = require('mri')(process.argv.slice(2), {
   alias: {
     owner: 'O',
     name: 'N',
@@ -25,33 +16,25 @@ const cli = require('minimist')(process.argv.slice(2), {
     locals: 'L',
     templates: 'T',
     help: 'h',
-    version: 'v'
-  }
-})
+    version: 'v',
+  },
+});
 
-const getCharlikeVersion = () => {
-  const filepath = require.resolve('charlike/package.json')
-  const charlikePkg = JSON.parse(fs.readFileSync(filepath, 'utf-8'))
-  return charlikePkg.version
+proc.title = 'charlike-cli';
+const name = cli._[0] || cli.name;
+const desc = cli._[1] || cli.desc;
+
+delete cli._;
+
+function get(pkgName, field = 'version') {
+  return getPkg(pkgName).then((pkg) => pkg[field]);
 }
 
-get('charlike-cli').then((info) => {
-  updateNotifier({ pkg: info }).notify()
-})
-
-/* istanbul ignore next */
-process.title = pkg.bin ? Object.keys(pkg.bin)[0] : pkg.name
-
-const name = cli._[0] || cli.name
-const desc = cli._[1] || cli.desc
-
-delete cli['_']
-
-const showHelp = (status) => {
+async function showHelp(status = 0) {
   console.log(`
-  ${pkg.description}
-  (${pkg.name} v${pkg.version})
-  (charlike v${getCharlikeVersion()})
+  ${await get('charlike-cli', 'description')}
+  (charlike-cli v${await get('charlike-cli')})
+  (charlike v${await get('charlike')})
 
   Usage
     $ charlike <name> <description> [flags]
@@ -69,45 +52,43 @@ const showHelp = (status) => {
     --locals, -L      Context to pass to template files (support dot notation)
     --templates, -T   Path to templates folder
     --cwd, -C         Folder to be used as current working dir
-
   Examples
     $ charlike my-awesome-project 'some cool description'
     $ charlike minibase-data 'we are awesome' --owner node-minibase
     $ charlike -D 'abc description here' -N beta-trans -O gulpjs
 
-  Issues: https://github.com/tunnckoCore/charlike
-  `)
-  process.exit(status) // eslint-disable-line no-process-exit
+  Issues 1: ${await get('charlike', 'homepage')}
+  Issues 2: ${await get('charlike-cli', 'homepage')}
+  `);
+
+  if (status !== 1) {
+    throw new Error('foo');
+  }
+
+  proc.exit(status);
 }
 
-if (cli.version) {
-  console.log(`${pkg.name} v${pkg.version}`)
-  console.log(`charlike v${getCharlikeVersion()}`)
-  process.exit(0) // eslint-disable-line no-process-exit
-}
 if (cli.help) {
-  showHelp(0)
+  showHelp();
 }
+
 if (!name || !desc) {
-  showHelp(1)
+  showHelp(1).catch(() => proc.exit(1));
+} else {
+  cli.description = desc;
+
+  /* eslint-disable promise/always-return */
+
+  charlike(name, desc, Object.assign({}, cli, { locals: cli }))
+    .then((dest) => {
+      console.log(`Project "${name}" scaffolded to "${dest}"`);
+    })
+    .catch((err) => {
+      /* istanbul ignore next */
+      console.error(`Sorry, some error occured!`);
+      /* istanbul ignore next */
+      console.error(`ERROR: ${err.message}`);
+      /* istanbul ignore next */
+      proc.exit(1);
+    });
 }
-
-cli.description = desc
-cli.repository = cli.repo
-cli.owner = cli.owner || username()
-
-const options = cli
-options.locals = cli
-
-charlike(name, desc, options)
-  .then((dest) => {
-    console.log(`Project "${name}" scaffolded to "${dest}"`)
-  })
-  .catch((err) => {
-    /* istanbul ignore next */
-    console.error(`Sorry, some error occured!`)
-    /* istanbul ignore next */
-    console.error(`ERROR: ${err.message}`)
-    /* istanbul ignore next */
-    process.exit(1) // eslint-disable-line no-process-exit
-  })

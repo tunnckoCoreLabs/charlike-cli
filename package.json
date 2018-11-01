@@ -1,68 +1,82 @@
 {
   "name": "charlike-cli",
-  "version": "0.0.0-development",
-  "description": "Command line interface for the [charlike][] project scaffolder.",
-  "repository": "tunnckoCore/charlike-cli",
-  "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
-  "main": "cli.js",
-  "license": "MIT",
+  "description": "Small CLI layer for the [charlike][] project scaffolder, requires charlike@^1.7",
+  "license": "Apache-2.0",
+  "licenseStart": "2018",
   "scripts": {
-    "deps": "dependency-check . --missing",
-    "secure": "nsp check",
-    "lint": "eslint --fix ./*.js",
-    "test": "nyc --reporter lcov node test.js",
-    "report": "nyc report",
-    "git": "npm-run-all --silent -s git:*",
-    "git:add": "git add --all",
-    "git:cz": "simple-commit-message",
-    "git:push": "git push",
-    "commit": "npm-run-all --silent -s deps secure lint test git",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "setup": "semantic-release-cli setup"
+    "lint": "eslint src test cli.js --cache --fix --quiet --format codeframe",
+    "test": "nyc --require esm asia -R codeframe",
+    "commit-dry": "git status --porcelain && git add -A && gitcommit -sS",
+    "precommit": "lint-staged && yarn test",
+    "commit": "yarn commit-dry"
+  },
+  "engines": {
+    "node": "^8.11.0 || ^10.12.0"
   },
   "dependencies": {
-    "charlike": "*",
-    "git-user-name": "1.2.0",
-    "minimist": "1.2.0",
-    "package-json": "4.0.1",
-    "update-notifier": "2.2.0"
+    "@tunnckocore/package-json": "^0.3.1",
+    "charlike": "^1.7.5",
+    "esm": "^3.0.84",
+    "mri": "^1.1.1"
   },
   "devDependencies": {
-    "dependency-check": "2.9.1",
-    "eslint": "4.2.0",
-    "execa": "0.7.0",
-    "fs-exists-sync": "0.1.0",
-    "mukla": "0.4.9",
-    "npm-run-all": "4.0.2",
-    "nsp": "2.6.3",
-    "nyc": "11.1.0",
-    "pre-commit": "1.2.2",
-    "semantic-release": "^6.3.6",
-    "simple-commit-message": "3.2.0",
-    "standard": "10.0.2"
+    "all-contributors-cli": "^5.4.0",
+    "asia": "^0.19.7",
+    "docks": "^0.6.0",
+    "eslint": "^5.8.0",
+    "eslint-config-esmc": "^1.0.12",
+    "gitcommit": "^1.0.9",
+    "husky": "^1.1.2",
+    "lint-staged": "^8.0.4",
+    "new-release": "^4.0.3",
+    "nyc": "^13.1.0"
   },
   "files": [
+    "src",
+    "index.js",
     "cli.js"
   ],
-  "keywords": [
-    "auto",
-    "automation",
-    "charlike",
-    "cli",
-    "project",
-    "project-scaffold",
-    "render",
-    "scaffold",
-    "templates",
-    "update"
-  ],
+  "bin": {
+    "charlike": "cli.js"
+  },
+  "main": "index.js",
+  "module": "src/index.js",
+  "typings": "src/index.d.ts",
+  "version": "0.0.0-semantically-released",
+  "repository": "tunnckoCore/charlike-cli",
+  "homepage": "https://github.com/tunnckoCore/charlike-cli",
+  "author": "Charlike Mike Reagent (https://tunnckocore.com)",
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "eslintConfig": {
+    "extends": "esmc"
+  },
+  "renovate": {
+    "extends": "tunnckocore"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn precommit"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx,es6,jsx,mjs}": [
+      "eslint --cache --fix --quiet --format codeframe",
+      "git add"
+    ],
+    "**/*.{js,ts,tsx,es6,jsx,mjs,md,mdx,json,yaml,yml,toml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "verb": {
     "run": true,
     "toc": {
       "render": true,
       "method": "preWrite",
-      "maxdepth": 3,
-      "footer": ""
+      "maxdepth": 4
     },
     "layout": "empty",
     "tasks": [
@@ -70,54 +84,20 @@
     ],
     "related": {
       "list": [
-        "always-done",
-        "minibase",
-        "try-catch-core"
+        "asia",
+        "charlike",
+        "docks",
+        "gitcommit",
+        "new-release",
+        "parse-commit-message"
       ]
     },
     "lint": {
       "reflinks": true
     },
     "reflinks": [
-      "always-done",
-      "async-done",
-      "base",
-      "charlike",
-      "commitizen",
-      "dezalgo",
-      "once",
-      "standard-version",
-      "verb",
-      "verb-generate-readme",
-      "git-user-name",
-      "handlebars",
-      "jstransformer"
-    ]
-  },
-  "bin": {
-    "charlike": "cli.js"
-  },
-  "engines": {
-    "node": ">=4",
-    "npm": ">=3"
-  },
-  "nyc": {
-    "check-coverage": true,
-    "statements": 100,
-    "functions": 75,
-    "branches": 100,
-    "lines": 100
-  },
-  "release": {
-    "analyzeCommits": "simple-commit-message"
-  },
-  "pre-commit": {
-    "silent": true,
-    "run": [
-      "deps",
-      "secure",
-      "lint",
-      "test"
+      "new-release",
+      "semantic-release"
     ]
   }
 }

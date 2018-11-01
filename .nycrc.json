@@ -1,0 +1,10 @@
+{
+  "statements": 0,
+  "functions": 0,
+  "branches": 0,
+  "lines": 0,
+  "cache": true,
+  "check-coverage": true,
+  "reporter": ["lcov", "text"],
+  "exclude": ["*.test.js", "**/*.test.js", "test"]
+}
