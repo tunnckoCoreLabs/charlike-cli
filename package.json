@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@tunnckocore/package-json": "^0.3.1",
-    "charlike": "^1.9.1",
+    "charlike": "^1.11.1",
     "esm": "^3.0.84",
     "mri": "^1.1.1"
   },

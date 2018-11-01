@@ -540,7 +540,7 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-charlike@^1.9.1:
+charlike@^1.11.1:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/charlike/-/charlike-1.11.1.tgz#b7a760de70a7475780a640afd20dd1b62cd5bcca"
   integrity sha512-L0SUvyKV3kSig83kOdaXVmCp/aoh3OmcvwOYfkznRG6vxCYDadOB4VdvXxuZVMcMN3nUKCpOEMPBonUEfl9iDg==
