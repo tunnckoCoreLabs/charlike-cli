@@ -5,6 +5,18 @@
   "lines": 0,
   "cache": true,
   "check-coverage": true,
-  "reporter": ["lcov", "text"],
-  "exclude": ["*.test.js", "**/*.test.js", "test"]
+  "require": "esm",
+  "reporter": [
+    "lcov",
+    "text"
+  ],
+  "include": [
+    "src/**/*.js"
+  ],
+  "exclude": [
+    "src/cjs-globals.js",
+    "*.test.js",
+    "**/*.test.js",
+    "test"
+  ]
 }
