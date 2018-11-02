@@ -540,11 +540,12 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-charlike@^1.11.1:
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/charlike/-/charlike-1.11.1.tgz#b7a760de70a7475780a640afd20dd1b62cd5bcca"
-  integrity sha512-L0SUvyKV3kSig83kOdaXVmCp/aoh3OmcvwOYfkznRG6vxCYDadOB4VdvXxuZVMcMN3nUKCpOEMPBonUEfl9iDg==
+charlike@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/charlike/-/charlike-2.0.0.tgz#e5393a1b908bdaf378ec162803fb9fe40b2a836c"
+  integrity sha512-V8vbF5jGwFBUWnBbbQsXFnEclzP6ZFdUBtdk4vLj/pOuNME+IJ6cnFG7KHpJOJu7O+x4RmYJw9dCaQ6SKFdf4A==
   dependencies:
+    "@tunnckocore/package-json" "^0.3.1"
     camelcase "^5.0.0"
     dateformat "^3.0.3"
     esm "^3.0.84"
@@ -555,6 +556,7 @@ charlike@^1.11.1:
     jstransformer "^1.0.0"
     jstransformer-j140 "^1.0.0"
     jstransformer-jstransformer "^1.1.6"
+    mri "^1.1.1"
     parse-git-config "^2.0.3"
     stream-copy-dir "^1.0.0"
 
