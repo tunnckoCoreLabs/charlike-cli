@@ -129,15 +129,6 @@
     esm "^3.0.84"
     semver "^5.6.0"
 
-"@tunnckocore/package-json@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/package-json/-/package-json-1.0.0.tgz#920337164c98776228aa1fc9931a6d60203d6256"
-  integrity sha512-5p17cM+p65+fmawiu34Vi1P0po42FyNVyIKfmTDs6kcCk9pkUl0jm0V+g2q4ZxTPCdoCzzgzjYieYo/972tGRw==
-  dependencies:
-    axios "^0.18.0"
-    esm "^3.0.84"
-    parse-package-name "^0.1.0"
-
 "@tunnckocore/package-json@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@tunnckocore/package-json/-/package-json-1.0.1.tgz#dd9fe7ad302c84a9352682b03e583613348097ab"
@@ -146,6 +137,11 @@
     axios "^0.18.0"
     esm "^3.0.84"
     parse-package-name "^0.1.0"
+
+"@tunnckocore/package-json@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/package-json/-/package-json-2.0.0.tgz#4bf0e3ff4ef47cf893682c5141bd7fca88c8c291"
+  integrity sha512-nKbVQuCEgEWSESgo0oIBdibAvj/1n1VAWqC0c4yhT+tfvVAt3zPGxWpDsDoKn/RXJaH6mbwgNz1QpACW/UfRJA==
 
 "@tunnckocore/release-cli@^1.2.0":
   version "1.2.0"
