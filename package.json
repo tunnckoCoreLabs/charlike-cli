@@ -14,7 +14,7 @@
     "node": "^8.11.0 || ^10.12.0"
   },
   "dependencies": {
-    "@tunnckocore/package-json": "^1.0.0",
+    "@tunnckocore/package-json": "^2.0.0",
     "charlike": "^3.0.0",
     "esm": "^3.0.84",
     "mri": "^1.1.1"
