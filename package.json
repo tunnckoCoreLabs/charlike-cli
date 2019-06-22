@@ -23,7 +23,7 @@
     "all-contributors-cli": "^6.0.0",
     "asia": "^0.19.7",
     "docks": "^0.7.0",
-    "eslint": "^5.8.0",
+    "eslint": "^6.0.0",
     "eslint-config-esmc": "^1.0.12",
     "gitcommit": "^1.0.9",
     "husky": "^2.0.0",
